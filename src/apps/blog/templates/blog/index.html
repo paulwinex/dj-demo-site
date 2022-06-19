@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles</title>
+</head>
+<body>
+Current user: {{ request.user }}
+<br>
+{% for article in articles %}
+    <p><a href="{% url 'details' article.id %}"> {{ article.title }}</a></p>
+{% endfor %}
+
+</body>
+</html>
