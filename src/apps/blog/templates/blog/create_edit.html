@@ -5,10 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+>> {{ form.instance }} <<
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Create</button>
+
+    {% if form.instance.pk %}
+        <button type="submit">Save</button>
+    {% else %}
+        <button type="submit">Create</button>
+    {% endif %}
 </form>
 </body>
 </html>

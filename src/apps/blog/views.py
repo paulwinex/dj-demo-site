@@ -1,11 +1,10 @@
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 from apps.blog.models import Article
-from .form import ArticleForm
+from .form import ArticleForm, ArticleEditForm
 
 
 class IndexView(ListView):
     template_name = 'blog/index.html'
-    # model = Article
     queryset = Article.objects.filter(published=True)
     context_object_name = 'articles'
 
@@ -21,4 +20,7 @@ class ArticleCreateView(CreateView):
     form_class = ArticleForm
 
 
-
+class ArticleUpdateView(UpdateView):
+    template_name = 'blog/create_edit.html'
+    model = Article
+    form_class = ArticleEditForm
