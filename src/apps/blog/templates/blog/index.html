@@ -8,7 +8,7 @@
 Current user: {{ request.user }}
 <br>
 {% for article in articles %}
-    <p><a href="{% url 'details' article.id %}"> {{ article.title }}</a></p>
+    <p><a href="{% url 'details' article.id %}"> {{ article }}</a></p>
 {% endfor %}
 
 </body>

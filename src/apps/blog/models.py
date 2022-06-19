@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Article(models.Model):
@@ -11,3 +12,8 @@ class Article(models.Model):
     draft = models.BooleanField(default=True, blank=True)
     published = models.BooleanField(default=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('details', kwargs={'pk': self.pk})
+
+    def __str__(self):
+        return self.title

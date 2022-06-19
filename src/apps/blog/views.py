@@ -1,5 +1,6 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from apps.blog.models import Article
+from .form import ArticleForm
 
 
 class IndexView(ListView):
@@ -13,3 +14,11 @@ class ArticleView(DetailView):
     template_name = 'blog/article.html'
     model = Article
     context_object_name = 'article'
+
+
+class ArticleCreateView(CreateView):
+    template_name = 'blog/create_edit.html'
+    form_class = ArticleForm
+
+
+
