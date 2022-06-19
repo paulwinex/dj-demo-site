@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.blog.models import Article
 from .form import ArticleForm, ArticleEditForm
 
@@ -15,12 +16,12 @@ class ArticleView(DetailView):
     context_object_name = 'article'
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(LoginRequiredMixin, CreateView):
     template_name = 'blog/create_edit.html'
     form_class = ArticleForm
 
 
-class ArticleUpdateView(UpdateView):
+class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'blog/create_edit.html'
     model = Article
     form_class = ArticleEditForm
